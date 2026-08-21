@@ -1,0 +1,22 @@
+{
+   "name": "atv-21-08-26",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node api.js"
+  },
+  "repository": {
+    "type": "module",
+    "url": "git+https://github.com/anaviana3-blip/atividades-ptac4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/anaviana3-blip/atividades-ptac4/issues"
+  },
+  "homepage": "https://github.com/anaviana3-blip/atividades-ptac4#readme"
+}
