@@ -14,18 +14,6 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.end(JSON.stringify(tarefas));
 
-    } else if (req.method == "GET" && req.url.startsWith("/tarefas/busca")) {
-
-        const url = new URL(req.url, `http://localhost:${PORT}`);
-        const titulo = url.searchParams.get("titulo");
-
-        const tarefasEncontradas = tarefas.filter(tarefa =>
-            tarefa.titulo.toLowerCase().includes(titulo.toLowerCase())
-        );
-
-        res.statusCode = 200;
-        res.end(JSON.stringify(tarefasEncontradas));
-
     } else if (req.method == "POST" && req.url == "/tarefas") {
         let body = ''
 
@@ -63,32 +51,6 @@ const server = http.createServer((req, res) => {
                 }));
             }
         });
-
-    } else if (req.method == "DELETE" && req.url.startsWith("/tarefas")) {
-
-        const url = new URL(req.url, `http://localhost:${PORT}`);
-        const index = url.searchParams.get("index");
-
-        if (index === null) {
-            res.statusCode = 400;
-            res.end(JSON.stringify({
-                error: "Informe o índice da tarefa!"
-            }));
-            return;
-        }
-
-        if (index < 0 || index >= tarefas.length) {
-            res.statusCode = 404;
-            res.end(JSON.stringify({
-                error: "Tarefa não encontrada!"
-            }));
-            return;
-        }
-
-        const tarefaRemovida = tarefas.splice(index, 1);
-
-        res.statusCode = 200;
-        res.end(JSON.stringify(tarefaRemovida[0]));
 
     } else {
         res.statusCode = 404
